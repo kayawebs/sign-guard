@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# next build output
+.next/
+out/
+
+# local app data (persisted at runtime, not versioned)
+var/
+
+# env and secrets
+.env*
+.env.local
+
+# editors / os
+.DS_Store
+.idea/
+*.log
+
+# misc
+sample/node_modules/
