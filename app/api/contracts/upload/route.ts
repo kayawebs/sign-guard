@@ -11,8 +11,9 @@ export async function POST(req: NextRequest) {
     return new Response("缺少文件", { status: 400 });
   }
   // If multiple images, treat as multi-page; else single file
-  const blobs = files.filter((f): f is Blob => f instanceof Blob);
-  const images = blobs.filter((b) => (b as any).type?.startsWith("image/"));
+  // Be tolerant of runtime differences: narrow to File-like entries by presence of arrayBuffer()
+  const blobs = (files as any[]).filter((f) => f && typeof f === 'object' && typeof (f as any).arrayBuffer === 'function') as File[];
+  const images = blobs.filter((b: any) => (b?.type || '').startsWith("image/"));
   try {
     if (images.length > 1) {
       // multi-image contract
