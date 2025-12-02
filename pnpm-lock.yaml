@@ -5,30 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@alicloud/credentials':
-    specifier: ^2.4.4
-    version: 2.4.4
-  '@alicloud/docmind-api20220711':
-    specifier: ^1.4.14
-    version: 1.4.14
-  '@alicloud/ocr-api20210707':
-    specifier: ^3.1.3
-    version: 3.1.3
-  '@alicloud/ocr20191230':
-    specifier: 4.0.1
-    version: 4.0.1
-  '@alicloud/openapi-client':
-    specifier: ^0.4.15
-    version: 0.4.15
-  '@alicloud/openapi-core':
-    specifier: ^1.0.6
-    version: 1.0.6
-  '@alicloud/tea-util':
-    specifier: ^1.4.11
-    version: 1.4.11
-  '@darabonba/typescript':
-    specifier: ^1.0.3
-    version: 1.0.3
   ali-oss:
     specifier: ^6.23.0
     version: 6.23.0
@@ -66,216 +42,6 @@ devDependencies:
     version: 5.4.5
 
 packages:
-
-  /@alicloud/credentials@2.4.4:
-    resolution: {integrity: sha512-/eRAGSKcniLIFQ1UCpDhB/IrHUZisQ1sc65ws/c2avxUMpXwH1rWAohb76SVAUJhiF4mwvLzLJM1Mn1XL4Xe/Q==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      httpx: 2.3.3
-      ini: 1.3.8
-      kitx: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/darabonba-array@0.1.2:
-    resolution: {integrity: sha512-ZPuQ+bJyjrd8XVVm55kl+ypk7OQoi1ZH/DiToaAEQaGvgEjrTcvQkg71//vUX/6cvbLIF5piQDvhrLb+lUEIPQ==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/darabonba-encode-util@0.0.1:
-    resolution: {integrity: sha512-Sl5vCRVAYMqwmvXpJLM9hYoCHOMsQlGxaWSGhGWulpKk/NaUBArtoO1B0yHruJf1C5uHhEJIaylYcM48icFHgw==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      moment: 2.30.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/darabonba-encode-util@0.0.2:
-    resolution: {integrity: sha512-mlsNctkeqmR0RtgE1Rngyeadi5snLOAHBCWEtYf68d7tyKskosXDTNeZ6VCD/UfrUu4N51ItO8zlpfXiOgeg3A==}
-    dependencies:
-      moment: 2.30.1
-    dev: false
-
-  /@alicloud/darabonba-map@0.0.1:
-    resolution: {integrity: sha512-2ep+G3YDvuI+dRYVlmER1LVUQDhf9kEItmVB/bbEu1pgKzelcocCwAc79XZQjTcQGFgjDycf3vH87WLDGLFMlw==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/darabonba-signature-util@0.0.4:
-    resolution: {integrity: sha512-I1TtwtAnzLamgqnAaOkN0IGjwkiti//0a7/auyVThdqiC/3kyafSAn6znysWOmzub4mrzac2WiqblZKFcN5NWg==}
-    dependencies:
-      '@alicloud/darabonba-encode-util': 0.0.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/darabonba-string@1.0.3:
-    resolution: {integrity: sha512-NyWwrU8cAIesWk3uHL1Q7pTDTqLkCI/0PmJXC4/4A0MFNAZ9Ouq0iFBsRqvfyUujSSM+WhYLuTfakQXiVLkTMA==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/docmind-api20220711@1.4.14:
-    resolution: {integrity: sha512-uv926lqIvqKaf4ecJMGt7fU1us7ZeDJQZ0LyGnaeZq5A00nfn1ZIs+jUuQgUmvmlv5on9xtBUxZ3yxrIgXHruw==}
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/openapi-core': 1.0.6
-      '@darabonba/typescript': 1.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/endpoint-util@0.0.1:
-    resolution: {integrity: sha512-+pH7/KEXup84cHzIL6UJAaPqETvln4yXlD9JzlrqioyCSaWxbug5FUobsiI6fuUOpw5WwoB3fWAtGbFnJ1K3Yg==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      kitx: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/gateway-pop@0.0.6:
-    resolution: {integrity: sha512-KF4I+JvfYuLKc3fWeWYIZ7lOVJ9jRW0sQXdXidZn1DKZ978ncfGf7i0LBfONGk4OxvNb/HD3/0yYhkgZgPbKtA==}
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/darabonba-array': 0.1.2
-      '@alicloud/darabonba-encode-util': 0.0.2
-      '@alicloud/darabonba-map': 0.0.1
-      '@alicloud/darabonba-signature-util': 0.0.4
-      '@alicloud/darabonba-string': 1.0.3
-      '@alicloud/endpoint-util': 0.0.1
-      '@alicloud/gateway-spi': 0.0.8
-      '@alicloud/openapi-util': 0.3.2
-      '@alicloud/tea-typescript': 1.8.0
-      '@alicloud/tea-util': 1.4.11
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/gateway-spi@0.0.8:
-    resolution: {integrity: sha512-KM7fu5asjxZPmrz9sJGHJeSU+cNQNOxW+SFmgmAIrITui5hXL2LB+KNRuzWmlwPjnuA2X3/keq9h6++S9jcV5g==}
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/tea-typescript': 1.8.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/ocr-api20210707@3.1.3:
-    resolution: {integrity: sha512-gHcvq5nIgNMOmglfaiRzDZeiv7qdWEXRhmhEGVl2Qvzy1whF77sxbm1cfNoPSbrb3DQo9uJIEwaRLUVBHCxSWA==}
-    dependencies:
-      '@alicloud/openapi-core': 1.0.6
-      '@darabonba/typescript': 1.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/ocr20191230@4.0.1:
-    resolution: {integrity: sha512-Mg7YQt6Hv7bBwC+liZoIvInwBbqhEVtcEJeSpvO3LBIV/+KcUr4jUvktHBFoC2lP1YKhG36VpEpjGdXIuS8DmA==}
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/openapi-core': 1.0.6
-      '@darabonba/typescript': 1.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/openapi-client@0.4.15:
-    resolution: {integrity: sha512-4VE0/k5ZdQbAhOSTqniVhuX1k5DUeUMZv74degn3wIWjLY6Bq+hxjaGsaHYlLZ2gA5wUrs8NcI5TE+lIQS3iiA==}
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/gateway-spi': 0.0.8
-      '@alicloud/openapi-util': 0.3.2
-      '@alicloud/tea-typescript': 1.8.0
-      '@alicloud/tea-util': 1.4.9
-      '@alicloud/tea-xml': 0.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/openapi-core@1.0.6:
-    resolution: {integrity: sha512-E5meOaZmdMHgvrSuSVRjMkrvttvW1aDfnzUnO+fjloYak/o/S6F8C3NXfPuhVVO/1GRfP6vf/4Vxo+tuus1UwA==}
-    requiresBuild: true
-    dependencies:
-      '@alicloud/credentials': 2.4.4
-      '@alicloud/gateway-pop': 0.0.6
-      '@alicloud/gateway-spi': 0.0.8
-      '@darabonba/typescript': 1.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/openapi-util@0.3.2:
-    resolution: {integrity: sha512-EC2JvxdcOgMlBAEG0+joOh2IB1um8CPz9EdYuRfTfd1uP8Yc9D8QRUWVGjP6scnj6fWSOaHFlit9H6PrJSyFow==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      '@alicloud/tea-util': 1.4.11
-      kitx: 2.2.0
-      sm3: 1.0.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/tea-typescript@1.8.0:
-    resolution: {integrity: sha512-CWXWaquauJf0sW30mgJRVu9aaXyBth5uMBCUc+5vKTK1zlgf3hIqRUjJZbjlwHwQ5y9anwcu18r48nOZb7l2QQ==}
-    dependencies:
-      '@types/node': 12.20.55
-      httpx: 2.3.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/tea-util@1.4.11:
-    resolution: {integrity: sha512-HyPEEQ8F0WoZegiCp7sVdrdm6eBOB+GCvGl4182u69LDFktxfirGLcAx3WExUr1zFWkq2OSmBroTwKQ4w/+Yww==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      '@darabonba/typescript': 1.0.3
-      kitx: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/tea-util@1.4.9:
-    resolution: {integrity: sha512-S0wz76rGtoPKskQtRTGqeuqBHFj8BqUn0Vh+glXKun2/9UpaaaWmuJwcmtImk6bJZfLYEShDF/kxDmDJoNYiTw==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      kitx: 2.2.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@alicloud/tea-xml@0.0.3:
-    resolution: {integrity: sha512-+/9GliugjrLglsXVrd1D80EqqKgGpyA0eQ6+1ZdUOYCaRguaSwz44trX3PaxPu/HhIPJg9PsGQQ3cSLXWZjbAA==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      '@types/xml2js': 0.4.14
-      xml2js: 0.6.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@darabonba/typescript@1.0.3:
-    resolution: {integrity: sha512-/y2y6wf5TsxD7pCPIm0OvTC+5qV0Tk7HQYxwpIuWRLXQLB0CRDvr6qk4bR6rTLO/JglJa8z2uCGZsaLYpQNqFQ==}
-    dependencies:
-      '@alicloud/tea-typescript': 1.8.0
-      httpx: 2.3.3
-      lodash: 4.17.21
-      moment: 2.30.1
-      moment-timezone: 0.5.48
-      xml2js: 0.6.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@emnapi/core@1.7.1:
     resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
@@ -538,20 +304,11 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@12.20.55:
-    resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
-    dev: false
-
   /@types/node@20.11.30:
     resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
     dependencies:
       undici-types: 5.26.5
-
-  /@types/node@22.19.1:
-    resolution: {integrity: sha512-LCCV0HdSZZZb34qifBsyWlUmok6W7ouER+oQIGBScS8EsZsQbrtFTUrDX4hOl+CS6p7cnNC4td+qrSVGSCTUfQ==}
-    dependencies:
-      undici-types: 6.21.0
-    dev: false
+    dev: true
 
   /@types/prop-types@15.7.15:
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
@@ -574,12 +331,6 @@ packages:
   /@types/scheduler@0.26.0:
     resolution: {integrity: sha512-WFHp9YUJQ6CKshqoC37iOlHnQSmxNc795UhB26CyBBttrN9svdIrUjl/NjnNmfcwtncN0h/0PPAFWv9ovP8mLA==}
     dev: true
-
-  /@types/xml2js@0.4.14:
-    resolution: {integrity: sha512-4YnrRemBShWRO2QjvUin8ESA41rH+9nQGLUGZV/1IDhi3SL9OhdpNC/MrulTWuptXKwhx/aDxE7toV0f/ypIXQ==}
-    dependencies:
-      '@types/node': 20.11.30
-    dev: false
 
   /@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5):
     resolution: {integrity: sha512-5FKsVcHTk6TafQKQbuIVkXq58Fnbkd2wDL4LB7AURN7RUOu1utVP+G8+6u3ZhEroW3DF6hyo3ZEXxgKgp4KeCg==}
@@ -2013,15 +1764,6 @@ packages:
     dependencies:
       function-bind: 1.1.2
 
-  /httpx@2.3.3:
-    resolution: {integrity: sha512-k1qv94u1b6e+XKCxVbLgYlOypVP9MPGpnN5G/vxFf6tDO4V3xpz3d6FUOY/s8NtPgaq5RBVVgSB+7IHpVxMYzw==}
-    dependencies:
-      '@types/node': 20.11.30
-      debug: 4.4.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /humanize-ms@1.2.1:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
     dependencies:
@@ -2063,10 +1805,6 @@ packages:
 
   /inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
-
-  /ini@1.3.8:
-    resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
-    dev: false
 
   /internal-slot@1.1.0:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
@@ -2383,12 +2121,6 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
-  /kitx@2.2.0:
-    resolution: {integrity: sha512-tBMwe6AALTBQJb0woQDD40734NKzb0Kzi3k7wQj9ar3AbP9oqhoVrdXPh7rk2r00/glIgd0YbToIUJsnxWMiIg==}
-    dependencies:
-      '@types/node': 22.19.1
-    dev: false
-
   /language-subtag-registry@0.3.23:
     resolution: {integrity: sha512-0K65Lea881pHotoGEa5gDlMxt3pctLi2RplBb7Ezh4rRdLEOtgi7n4EwK9lamnUCkKBqaeKRVebTq6BAxSkpXQ==}
     dev: true
@@ -2493,16 +2225,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.8
-    dev: false
-
-  /moment-timezone@0.5.48:
-    resolution: {integrity: sha512-f22b8LV1gbTO2ms2j2z13MuPogNoh5UzxL3nzNAYKGraILnbGc9NEE6dyiiiLv46DGRb8A4kg8UKWLjPthxBHw==}
-    dependencies:
-      moment: 2.30.1
-    dev: false
-
-  /moment@2.30.1:
-    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
     dev: false
 
   /ms@2.1.3:
@@ -3093,10 +2815,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /sm3@1.0.3:
-    resolution: {integrity: sha512-KyFkIfr8QBlFG3uc3NaljaXdYcsbRy1KrSfc4tsQV8jW68jAktGeOcifu530Vx/5LC+PULHT0Rv8LiI8Gw+c1g==}
-    dev: false
-
   /source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -3419,10 +3137,7 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-
-  /undici-types@6.21.0:
-    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
-    dev: false
+    dev: true
 
   /unescape@1.0.1:
     resolution: {integrity: sha512-O0+af1Gs50lyH1nUu3ZyYS1cRh01Q/kUKatTOkSs7jukXE6/NebucDVxyiDsA9AQ4JC1V1jUH9EO8JX2nMDgGQ==}

@@ -35,7 +35,7 @@ export async function analyzeWithQwen({ url, urls, textHint, expectedName, mime 
   const pyRulesHeader =
     "你是合同预审核助手。立场：‘我方’固定为标准署名（默认上海大学材料科学与工程学院），‘对方’为与我方相对一方。\n" +
     `我方=${expectedName || "上海大学材料科学与工程学院"}。请严格按固定规则输出：\n`;
-  const pyRule1 = `合同主体名称必须正确、完整；并且‘我方’名称必须与标准署名完全一致（标准署名：${expectedName || "上海大学材料科学与工程学院"}，逐字匹配，不允许全角/半角、空格或括号形态差异）。`;
+  const pyRule1 = `合同主体名称必须正确、完整；并且甲方或乙方至少一方名称必须与标准署名完全一致（标准署名：${expectedName || "上海大学材料科学与工程学院"}，逐字匹配，不允许全角/半角、空格或括号形态差异）。`;
   const pyRulesList = [
     pyRule1,
     "若合同已有对方盖章，则合同文本中的对方名称必须与印章印文一致。",
@@ -45,8 +45,8 @@ export async function analyzeWithQwen({ url, urls, textHint, expectedName, mime 
     "合同签署日期必须存在（若盖章则应在邻近标注日期）。",
     "对方主体名称、签名栏信息和印章印文需一致。",
   ];
-  const pyJsonSchema = `\n输出合法 JSON（只输出 JSON，不要额外文本）：\n{\n  \"ok\": boolean,\n  \"checks\": [{\"name\": string, \"ok\": boolean, \"message\": string}],\n  \"category\": string,\n  \"recognized\": {\n    \"seals\": [{\"side\": \"我方\"|\"对方\"|\"未知\", \"imprint_text\": string, \"near_text\": string|null}],\n    \"signatures\": [{\"side\": \"我方\"|\"对方\"|\"未知\", \"name\": string|null, \"label\": string|null}]\n  },\n  \"strict\": {\n    \"partyA_name\": string|null,\n    \"partyB_name\": string|null,\n    \"my_side\": \"甲方/需方\"|\"乙方/供方\"|\"未知\",\n    \"expected_match_exact\": boolean\n  }\n}\n`;
-  const pyStrict = "严格性要求：\n- 第一条必须基于‘完全一致(逐字相等)’判断我方名称是否等于标准署名；若不完全一致，即判定为 false（可在 message 中说明近似/宽松匹配情况，但不影响结果）。此外：checks[0].ok 必须与 strict.expected_match_exact 完全一致，不得自相矛盾；若不一致，以 strict.expected_match_exact 为准。\n" +
+  const pyJsonSchema = `\n输出合法 JSON（只输出 JSON，不要额外文本）：\n{\n  \"ok\": boolean,\n  \"checks\": [{\"name\": string, \"ok\": boolean, \"message\": string}],\n  \"category\": string,\n  \"recognized\": {\n    \"seals\": [{\"side\": \"我方\"|\"对方\"|\"未知\", \"imprint_text\": string, \"near_text\": string|null}],\n    \"signatures\": [{\"side\": \"我方\"|\"对方\"|\"未知\", \"name\": string|null, \"label\": string|null}]\n  },\n  \"strict\": {\n    \"partyA_name\": string|null,\n    \"partyB_name\": string|null,\n    \"my_side\": \"甲方/需方\"|\"乙方/供方\"|\"未知\",\n    \"expected_match_any\": boolean\n  }\n}\n`;
+  const pyStrict = "严格性要求：\n- 第一条基于‘完全一致(逐字相等)’判断：只要甲方或乙方任一方与标准署名完全一致，则判定通过（expected_match_any=true）；否则不通过（expected_match_any=false）。checks[0].ok 必须与 strict.expected_match_any 完全一致，不得自相矛盾；若不一致，以 strict.expected_match_any 为准。\n" +
     "- 甲/乙/供/需关系：甲方=需方，乙方=供方。\n- 判断‘我方’：若甲/乙任意一方名称与标准署名完全一致，则该方为我方；若都不一致，默认甲方(需方)为我方。相关规则中的‘对方’为相对的一方。\n" +
     "- checks 必须包含全部7项，顺序与名称完全一致，不得遗漏；若无法识别某项，也必须输出该项并设置 ok=false，message 简述原因。\n" +
     "在 checks 的第一条 message 中，必须列出识别到的甲/需与乙/供名称，以及与标准署名的匹配结果（完全一致/不一致）。\n" +
@@ -151,10 +151,10 @@ export async function analyzeWithQwen({ url, urls, textHint, expectedName, mime 
       checks = CANONICAL_RULES.map((n) => byName.get(normalize(n)) || { name: n, ok: false, message: "未返回该项" });
     }
   }
-  // Enforce consistency for rule #1 based on strict.expected_match_exact and message cues
+  // Enforce consistency for rule #1 based on strict.expected_match_any and message cues
   try {
     if (checks.length >= 1) {
-      const strictMatch = typeof parsed?.strict?.expected_match_exact === 'boolean' ? !!parsed.strict.expected_match_exact : undefined;
+      const strictMatch = typeof parsed?.strict?.expected_match_any === 'boolean' ? !!parsed.strict.expected_match_any : undefined;
       const msg = String(checks[0]?.message || '');
       const msgSuggestsMismatch = /不一致|不相等|不等于|不匹配/.test(msg);
       if (strictMatch === false || msgSuggestsMismatch) {
